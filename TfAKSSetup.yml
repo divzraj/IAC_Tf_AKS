@@ -13,7 +13,7 @@ steps:
       provider: 'azurerm'
       command: 'init'
       backendServiceArm: 'azureRGSC'
-      backendAzureRmResourceGroupName: 'tf-backend'
+      backendAzureRmResourceGroupName: 'test'
       backendAzureRmStorageAccountName: 'tfstoragename00'
       backendAzureRmContainerName: 'tfstoragename00cont'
       backendAzureRmKey: 'kubernetes-statefile'
