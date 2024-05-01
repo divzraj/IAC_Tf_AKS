@@ -17,6 +17,8 @@ stages:
  - stage: Terraforminit
    jobs:
     - job: initJob
+      variables:
+        system.debug: 'true'
       steps:
         - task: TerraformTaskV4@4
           inputs:
