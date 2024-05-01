@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  app:deploym
+  labels:
+    one:n
+spec:
+  replica:1
+  selector:
+    matchLabels:
+      deploy: cont
+  template:
+    metadata:
+      labels:
+        deploy: cont
+    spec:
+      containers:
+        - image: nginx:latest
+          name: nginximage
+          port:
+           - name: port
+             ContainerPort: 80
+----
+
+apiVersion: v1
+kind: Service
+metadata:
+  it: service
+spec:
+  ports:
+    - targetPort: port
+      port: 32008 
+      protocol: TCP
+  type: NodePort
+   
