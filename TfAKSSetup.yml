@@ -41,12 +41,5 @@ stages:
             command: 'plan'
             environmentServiceName: 'azureRGSC'
             providerAzureRmSubscriptionId: 'd018c389-28e2-4236-8359-ff218fed75b2'
-            runAzLogin: true
             commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(public_key.secureFile)'
             allowTelemetryCollection: true
-            publishPlanResults: 'Tresults'
-            backendAzureRmResourceGroupName: 'backend-RG'
-            backendAzureRmResourceGroupLocation: 'westeurope'
-            backendAzureRmStorageAccountName: 'tfstoragename00'
-            backendAzureRmContainerName: 'tfstoragename00cont'
-            backendAzureRmKey: 'kubernetes-statefile'
