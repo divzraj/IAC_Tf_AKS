@@ -34,8 +34,8 @@ stages:
             allowTelemetryCollection: true
         - task: TerraformCLI@2
           inputs:
-            command: 'apply'
+            command: 'plan'
+            workingDirectory: '$(System.DefaultWorkingDirectory)'
             environmentServiceName: 'azureRGSC'
-            providerAzureRmSubscriptionId: 'd018c389-28e2-4236-8359-ff218fed75b2'
-            commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(public_key.secureFile)'
-            allowTelemetryCollection: true
+            commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(public_key.secureFilePath)'
+            
