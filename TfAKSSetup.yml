@@ -21,7 +21,7 @@ stages:
         - task: TerraformTaskV4@4
           inputs:
             provider: 'azurerm'
-            command: 'init'
+            command: 'init -reconfigure'
             backendServiceArm: 'azureRGSC'
             backendAzureRmResourceGroupName: 'test'
             backendAzureRmStorageAccountName: 'tfstoragename00'
