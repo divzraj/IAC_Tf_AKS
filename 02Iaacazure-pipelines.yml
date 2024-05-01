@@ -25,15 +25,16 @@ steps:
     backendAzureRmKey: 'kubernetes-dev.tfstate'
     allowTelemetryCollection: true
 
+# - task: TerraformCLI@0
+#   inputs:
+#     command: 'apply'
+#     environmentServiceName: 'azureRGSC'
+#     commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
+#     allowTelemetryCollection: true
+
 - task: TerraformCLI@0
   inputs:
-    command: 'apply'
+    command: 'destroy'
     environmentServiceName: 'azureRGSC'
-    commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
+    providerAzureRmSubscriptionId: 'd018c389-28e2-4236-8359-ff218fed75b2'
     allowTelemetryCollection: true
-
-# # - task: TerraformCLI@0
-# #   inputs:
-# #     command: 'destroy'
-# #     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
-# #     environmentServiceName: 'azure-resource-manager-service-connection'
