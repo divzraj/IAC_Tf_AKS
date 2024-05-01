@@ -4,12 +4,19 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-stages:
-  - stage: "SetupAKScluster"
-    jobs:
-     - job: Job1
-       steps:
-        - bash: echo "creating AKS cluster"
+
+steps:
+  - bash: echo creating AKS cluster
+
+  - task: TerraformTaskV4@4
+    inputs:
+      provider: 'azurerm'
+      command: 'init'
+      backendServiceArm: 'azureRGSC'
+      backendAzureRmResourceGroupName: 'tf-backend'
+      backendAzureRmStorageAccountName: 'tfstoragename00'
+      backendAzureRmContainerName: 'tfstoragename00cont'
+      backendAzureRmKey: 'kubernetes-statefile'
 
 
 
