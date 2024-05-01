@@ -13,6 +13,7 @@ stages:
           name: public_key
           inputs:
             secureFile: 'azure_rsa.pub'
+        - bash: ls $(System.DefaultWorkingDirectory)
 
  - stage: Terraforminit
    jobs:
