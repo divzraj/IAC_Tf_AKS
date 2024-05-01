@@ -1,34 +1,29 @@
-variable environment{
-    default = "DevTesting"
+variable "client_id" {}
+variable "client_secret" {}
+variable "ssh_public_key" {}
+
+variable "environment" {
+  default = "dev"
 }
 
-variable resource_group{
-    default= "DevEnv"
+variable "location" {
+  default = "westeurope"
 }
 
-variable location{
-    default = "East Asia"
+variable "node_count" {
+  default = 2
 }
 
-variable node_count{
-    default = 2
+
+
+variable "dns_prefix" {
+  default = "k8stest"
 }
 
-variable cluster_name{
-    default = "Devk8sCluster"
+variable "cluster_name" {
+  default = "k8stest"
 }
 
-variable dns_prefix{
-    default = "devtest"
-}
-
-variable ssh_public_key {
-    
-}
-
-variable client_id {
-    
-}
-variable client_secret {
-    
+variable "resource_group" {
+  default = "kubernetes"
 }
