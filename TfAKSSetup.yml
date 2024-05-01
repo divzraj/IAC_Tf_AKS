@@ -24,7 +24,6 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'init'
-            commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(public_key.secureFile)'
             backendServiceArm: 'Free Trial (d018c389-28e2-4236-8359-ff218fed75b2)'
             backendAzureRmResourceGroupName: 'test'
             backendAzureRmStorageAccountName: 'tfstoragename00'
@@ -34,6 +33,6 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'plan'
-            commandOptions: '''-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(public_key.secureFile)'''
+            commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(public_key.secureFile)'
             environmentServiceNameAzureRM: 'Free Trial (d018c389-28e2-4236-8359-ff218fed75b2)'
               
