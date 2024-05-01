@@ -1,19 +1,15 @@
 trigger:
-- main
+- master
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
-stages:
- - stage: DownloadSecureFilec
-   jobs:
-    - job: downloadJOb
-      steps:
-        - task: DownloadSecureFile@1
-          name: public_key
-          inputs:
-            secureFile: 'azure_rsa.pub'
-        - bash: ls -ltr $(System.DefaultWorkingDirectory)
+steps:
+- task: DownloadSecureFile@1
+  name: publickey
+  inputs:
+    secureFile: 'azure_rsa.pub'
+- bash: ls -ltr $(System.DefaultWorkingDirectory)
       
 
 #  - stage: Terraforminit
