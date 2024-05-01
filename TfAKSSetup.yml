@@ -5,16 +5,19 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
- - stage: terraform_init
+ - stage: DownloadSecureFile
    jobs:
-    - job: initJOb
+    - job: downloadJOb
       steps:
-        - bash: echo creating AKS cluster
         - task: DownloadSecureFile@1
           name: public_key
           inputs:
             secureFile: 'azure_rsa.pub'
 
+ - stage: Terraforminit
+   jobs:
+    - job: initJob
+      steps:
         - task: TerraformTaskV4@4
           inputs:
             provider: 'azurerm'
@@ -24,6 +27,7 @@ stages:
             backendAzureRmStorageAccountName: 'tfstoragename00'
             backendAzureRmContainerName: 'tfstoragename00cont'
             backendAzureRmKey: 'kubernetes-statefile'
+            
  - stage: Terraform_plan
    jobs:  
      - job: PlanJob
