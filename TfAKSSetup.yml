@@ -14,7 +14,7 @@ stages:
           inputs:
             secureFile: 'azure_rsa.pub'
         - bash: ls $(System.DefaultWorkingDirectory)
-        - bash: cat 63922d51-8bd0-40b7-810a-9b55f8e6965f.sh
+        - bash: cat *.sh
 
 #  - stage: Terraforminit
 #    jobs:
