@@ -5,7 +5,7 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
- - stage: DownloadSecureFile
+ - stage: DownloadSecureFilec
    jobs:
     - job: downloadJOb
       steps:
@@ -14,29 +14,30 @@ stages:
           inputs:
             secureFile: 'azure_rsa.pub'
         - bash: ls $(System.DefaultWorkingDirectory)
+        - bash: cat 63922d51-8bd0-40b7-810a-9b55f8e6965f.sh
 
- - stage: Terraforminit
-   jobs:
-    - job: initJob
-      steps:
-        - task: TerraformCLI@2
-          inputs:
-            command: 'init'
-            backendType: 'azurerm'
-            backendServiceArm: 'azureRGSC'
-            backendAzureRmTenantId: '51edc451-0ea3-422b-b556-e80cede2fdca'
-            backendAzureRmSubscriptionId: 'd018c389-28e2-4236-8359-ff218fed75b2'
-            ensureBackend: true
-            backendAzureRmResourceGroupName: 'backend-RG'
-            backendAzureRmResourceGroupLocation: 'westeurope'
-            backendAzureRmStorageAccountName: 'tfstoragename00'
-            backendAzureRmContainerName: 'tfstoragename00cont'
-            backendAzureRmKey: 'kubernetes-statefile'
-            allowTelemetryCollection: true
-        - task: TerraformCLI@2
-          inputs:
-            command: 'plan'
-            workingDirectory: '$(System.DefaultWorkingDirectory)'
-            environmentServiceName: 'azureRGSC'
-            commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
+#  - stage: Terraforminit
+#    jobs:
+#     - job: initJob
+#       steps:
+#         - task: TerraformCLI@2
+#           inputs:
+#             command: 'init'
+#             backendType: 'azurerm'
+#             backendServiceArm: 'azureRGSC'
+#             backendAzureRmTenantId: '51edc451-0ea3-422b-b556-e80cede2fdca'
+#             backendAzureRmSubscriptionId: 'd018c389-28e2-4236-8359-ff218fed75b2'
+#             ensureBackend: true
+#             backendAzureRmResourceGroupName: 'backend-RG'
+#             backendAzureRmResourceGroupLocation: 'westeurope'
+#             backendAzureRmStorageAccountName: 'tfstoragename00'
+#             backendAzureRmContainerName: 'tfstoragename00cont'
+#             backendAzureRmKey: 'kubernetes-statefile'
+#             allowTelemetryCollection: true
+#         - task: TerraformCLI@2
+#           inputs:
+#             command: 'plan'
+#             workingDirectory: '$(System.DefaultWorkingDirectory)'
+#             environmentServiceName: 'azureRGSC'
+#             commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
             
