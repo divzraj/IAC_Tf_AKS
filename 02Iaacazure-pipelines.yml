@@ -10,19 +10,19 @@ steps:
   inputs:
     secureFile: 'azure_rsa.pub'
 
-# - task: TerraformCLI@0
-#   inputs:
-#     command: 'init'
-#     backendType: 'azurerm'
-#     backendServiceArm: 'azureRGSC'
-#     backendAzureRmSubscriptionId: 'd018c389-28e2-4236-8359-ff218fed75b2'
-#     ensureBackend: true
-#     backendAzureRmResourceGroupName: 'terraform-backend-rg'
-#     backendAzureRmResourceGroupLocation: 'westeurope'
-#     backendAzureRmStorageAccountName: 'storageacctrangaxyz'
-#     backendAzureRmContainerName: 'storageacctrangacontainer'
-#     backendAzureRmKey: 'kubernetes-dev.tfstate'
-#     allowTelemetryCollection: true
+- task: TerraformCLI@0
+  inputs:
+    command: 'init'
+    backendType: 'azurerm'
+    backendServiceArm: 'azureRGSC'
+    backendAzureRmSubscriptionId: 'd018c389-28e2-4236-8359-ff218fed75b2'
+    ensureBackend: true
+    backendAzureRmResourceGroupName: 'terraform-backend-rg'
+    backendAzureRmResourceGroupLocation: 'westeurope'
+    backendAzureRmStorageAccountName: 'storageacctrangaxyz'
+    backendAzureRmContainerName: 'storageacctrangacontainer'
+    backendAzureRmKey: 'kubernetes-dev.tfstate'
+    allowTelemetryCollection: true
 
 # - task: TerraformCLI@0
 #   inputs:
