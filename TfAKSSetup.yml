@@ -24,7 +24,7 @@ stages:
           inputs:
             command: 'init'
             backendType: 'azurerm'
-            backendServiceArm: 'azureRGSC'
+            backendServiceArm: 'Free Trial (d018c389-28e2-4236-8359-ff218fed75b2)'
             backendAzureRmTenantId: '51edc451-0ea3-422b-b556-e80cede2fdca'
             backendAzureRmSubscriptionId: 'd018c389-28e2-4236-8359-ff218fed75b2"'
             ensureBackend: true
