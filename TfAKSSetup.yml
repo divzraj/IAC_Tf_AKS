@@ -4,19 +4,36 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+stages:
+ - stage: terraform_init
+   jobs:
+    - job: initJOb
+      steps:
+        - bash: echo creating AKS cluster
+        - task: DownloadSecureFile@1
+          name: public_key
+          inputs:
+            secureFile: 'azure_rsa.pub'
 
-steps:
-  - bash: echo creating AKS cluster
-
-  - task: TerraformTaskV4@4
-    inputs:
-      provider: 'azurerm'
-      command: 'init'
-      backendServiceArm: 'azureRGSC'
-      backendAzureRmResourceGroupName: 'test'
-      backendAzureRmStorageAccountName: 'tfstoragename00'
-      backendAzureRmContainerName: 'tfstoragename00cont'
-      backendAzureRmKey: 'kubernetes-statefile'
+        - task: TerraformTaskV4@4
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            backendServiceArm: 'azureRGSC'
+            backendAzureRmResourceGroupName: 'test'
+            backendAzureRmStorageAccountName: 'tfstoragename00'
+            backendAzureRmContainerName: 'tfstoragename00cont'
+            backendAzureRmKey: 'kubernetes-statefile'
+ - stage: Terraform_plan
+   jobs:  
+     - job: PlanJob
+       steps:
+        - task: TerraformTaskV4@4
+          inputs:
+            provider: 'azurerm'
+            command: 'plan'
+            commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(public_key.secureFile)' 
+            environmentServiceNameAzureRM: 'azureRGSC'
       #
 
 
