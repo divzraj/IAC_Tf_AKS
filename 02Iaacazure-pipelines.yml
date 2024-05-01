@@ -13,6 +13,7 @@ steps:
 - task: TerraformCLI@0
   inputs:
     command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
     backendType: 'azurerm'
     backendServiceArm: 'azureRGSC'
     backendAzureRmSubscriptionId: 'd018c389-28e2-4236-8359-ff218fed75b2'
