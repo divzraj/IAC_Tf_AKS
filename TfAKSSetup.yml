@@ -32,10 +32,6 @@ stages:
             backendAzureRmContainerName: 'tfstoragename00cont'
             backendAzureRmKey: 'kubernetes-statefile'
             allowTelemetryCollection: true
- - stage: TerraformPlan
-   jobs:
-     - job: jobplan
-       steps:
         - task: TerraformCLI@2
           inputs:
             command: 'plan'
