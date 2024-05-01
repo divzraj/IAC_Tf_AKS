@@ -1,0 +1,15 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: "Setup AKS cluster"
+    jobs:
+     - job: Job1
+       steps:
+        - bash: echo "creating AKS cluster"
+
+
+
