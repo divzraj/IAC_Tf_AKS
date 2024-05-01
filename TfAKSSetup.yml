@@ -37,5 +37,5 @@ stages:
             command: 'plan'
             workingDirectory: '$(System.DefaultWorkingDirectory)'
             environmentServiceName: 'azureRGSC'
-            commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(public_key.secureFilePath)'
+            commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
             
