@@ -60,7 +60,7 @@ stages:
         kubernetesServiceConnection: 'kubefile'
         namespace: 'default'
         manifests: '$(System.DefaultWorkingDirectory)/deploy.yaml'
-        containers: 'in28min/currency-exchange-devops:$(tag)'
+        containers: 'in28min/currency-exchange-devops:latest'
 # Stage 2
 # Download the K8S Files
 # Deploy to K8S Cluster with Docker Image
