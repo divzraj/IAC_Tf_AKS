@@ -23,16 +23,16 @@ steps:
     backendAzureRmKey: 'kubernetes-dev.tfstate12'
     allowTelemetryCollection: true
 
-- task: TerraformCLI@0
-  inputs:
-    command: 'apply'
-    environmentServiceName: 'azureRGSC'
-    commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
-    allowTelemetryCollection: true
+# - task: TerraformCLI@0
+#   inputs:
+#     command: 'apply'
+#     environmentServiceName: 'azureRGSC'
+#     commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
+#     allowTelemetryCollection: true
 
 - task: TerraformCLI@0
   inputs:
     command: 'destroy'
     environmentServiceName: 'azureRGSC'
     allowTelemetryCollection: true
-    commandOptions: '-auto-approve -var="client_id=$(client_id)" -auto-approve -var="ssh_public_key=$(client_secret)" -auto-approve -var="client_secret=$(publickey.secureFilePath)"  '
+    commandOptions: '-auto-approve -var="client_id=$(client_id)" -auto-approve -var="ssh_public_key=$(publickey.secureFilePath)" -auto-approve -var="client_secret=$(client_secret)" '
