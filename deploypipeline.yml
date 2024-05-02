@@ -59,7 +59,7 @@ stages:
         action: 'deploy'
         kubernetesServiceConnection: 'kubefile'
         namespace: 'default'
-        manifests: '$(System.ArtifactsDirectory)/deploy.yaml'
+        manifests: '$(System.DefaultWorkingDirectory)/deploy.yaml'
         containers: 'in28min/currency-exchange-devops:$(tag)'
 # Stage 2
 # Download the K8S Files
