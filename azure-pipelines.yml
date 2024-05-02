@@ -35,4 +35,4 @@ steps:
     command: 'destroy'
     environmentServiceName: 'azureRGSC'
     allowTelemetryCollection: true
-    commandOptions: '-auto-approve -var="client_id=$(client_id)" -auto-approve -var="client_secret=$(client_secret)" '
+    commandOptions: '-auto-approve -var="client_id=$(client_id)" -auto-approve -var="ssh_public_key=$(client_secret)" -auto-approve -var="client_secret=$(publickey.secureFilePath)"  '
