@@ -35,3 +35,4 @@ steps:
     command: 'destroy'
     environmentServiceName: 'azureRGSC'
     allowTelemetryCollection: true
+    commandOptions: '-auto-approve -var="client_id=$(client_id)"'
