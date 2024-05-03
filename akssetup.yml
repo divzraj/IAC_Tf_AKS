@@ -1,0 +1,39 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: DownloadSecureFile@1
+  name: publickey
+  inputs:
+    secureFile: 'azure_rsa.pub'
+
+- task: TerraformCLI@0
+  inputs:
+    command: 'init'
+    backendType: 'azurerm'
+    backendServiceArm: 'azureRGSC'
+    backendAzureRmSubscriptionId: 'd018c389-28e2-4236-8359-ff218fed75b2'
+    ensureBackend: true
+    backendAzureRmResourceGroupName: 'terraform-backend-rg'
+    backendAzureRmResourceGroupLocation: 'westeurope'
+    backendAzureRmStorageAccountName: 'storageacctrangaxyz12'
+    backendAzureRmContainerName: 'storageacctrangacontainer12'
+    backendAzureRmKey: 'kubernetes-dev.tfstate12'
+    allowTelemetryCollection: true
+
+- task: TerraformCLI@0
+  inputs:
+    command: 'apply'
+    environmentServiceName: 'azureRGSC'
+    commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
+    allowTelemetryCollection: true
+
+# - task: TerraformCLI@0
+#   inputs:
+#     command: 'destroy'
+#     environmentServiceName: 'azureRGSC'
+#     allowTelemetryCollection: true
+#     commandOptions: '-auto-approve -var="client_id=$(client_id)" -auto-approve -var="ssh_public_key=$(publickey.secureFilePath)" -auto-approve -var="client_secret=$(client_secret)" '
