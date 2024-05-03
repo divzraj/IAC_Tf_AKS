@@ -31,9 +31,9 @@ steps:
     commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
     allowTelemetryCollection: true
 
-- task: TerraformCLI@0
-  inputs:
-    command: 'destroy'
-    environmentServiceName: 'azureRGSC'
-    allowTelemetryCollection: true
-    commandOptions: '-auto-approve -var="client_id=$(client_id)" -auto-approve -var="ssh_public_key=$(publickey.secureFilePath)" -auto-approve -var="client_secret=$(client_secret)" '
+# - task: TerraformCLI@0
+#   inputs:
+#     command: 'destroy'
+#     environmentServiceName: 'azureRGSC'
+#     allowTelemetryCollection: true
+#     commandOptions: '-auto-approve -var="client_id=$(client_id)" -auto-approve -var="ssh_public_key=$(publickey.secureFilePath)" -auto-approve -var="client_secret=$(client_secret)" '
